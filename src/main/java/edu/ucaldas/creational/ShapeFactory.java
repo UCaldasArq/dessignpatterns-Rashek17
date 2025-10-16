@@ -6,13 +6,23 @@ package edu.ucaldas.creational;
 // "Square" → new Square()
 // Si el tipo no existe, retorna null.
 
-public class ShapeFactory {
-    public Shape createShape(String type) {
-        // TODO: completa la lógica de creación
-        return null;
-    }
-}
-
 // TODO: Implementa las clases Circle y Square
 // Circle → "Dibujando un círculo."
 // Square → "Dibujando un cuadrado."
+
+public class ShapeFactory {
+    // Implementa el patrón Factory Method
+    // Devuelve una forma según el tipo solicitado
+    public Shape createShape(String type) {
+        if (type == null) {
+            return null;
+        }
+
+        return switch (type.toLowerCase()) {
+            case "circle" -> new Circle();
+            case "square" -> new Square();
+            default -> null; // tipo no reconocido
+        };
+    }
+}
+
